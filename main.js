@@ -85,15 +85,24 @@ myCont.appendChild(myUnLi);
 // BONUS: The modal popup should be able to be closed. Refactor for this functionality
 
 const myButton = document.getElementById("btn");
+//Hunter example
+//myButton.addEventListener("click", showHunter);
+//my code
 myButton.addEventListener("click", show);
-//place scope out of functions
-var myRoot = undefined;
-var newDialog5 = undefined; 
-var newDiv5 = undefined;
 
+// In the course, we didn't use dialog, but used DIV only
+/*function showHunter() {
+  const modalDiv = document.createElement("div");
+  modalDiv.textContent = "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
+  modalDiv.id = "modal";
+  document.body.append(modalDiv);   //shortcut
+  //lots more stuff here
+}*/
+
+//My version of dialog
 function show() {
-  myRoot = document.getElementsByClassName("root")[0];
-  newDialog5 = document.createElement("dialog");
+  const myRoot = document.getElementsByClassName("root")[0];
+  const newDialog5 = document.createElement("dialog");
   newDialog5.textContent = 
       "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user";
   newDialog5.className = "modal-card";
@@ -101,19 +110,21 @@ function show() {
   const newButton5 = document.createElement("button");
   newButton5.id = "btn2";
   newButton5.textContent = "CLOSE";
-  newButton5.addEventListener("click", closeIt);
+  newButton5.addEventListener("click", () => {newDiv5.remove()});  //nice - inline function for remove
+  //newButton5.addEventListener("click", closeIt);
   newDialog5.appendChild(newButton5);
 
-  newDiv5 = document.createElement("div");
+  const newDiv5 = document.createElement("div");
   newDiv5.id = "modal";
   newDiv5.append(newDialog5);
   myRoot.append(newDiv5);
-
+  
   newDialog5.showModal();
+
   //setTimeout(() => {newDialog5.close();
   //                  myRoot.removeChild(newDiv5)},3000)}
 }
-
-function closeIt() {
-    newDialog5.close();
-    myRoot.removeChild(newDiv5)}
+//my old code listener event
+//function closeIt() {
+//    newDialog5.close();
+//    myRoot.removeChild(newDiv5)}
