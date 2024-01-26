@@ -66,3 +66,12 @@ body {
   background-color: darkcyan;
   cursor: pointer;
 }
+
+#btn2 {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  background-color: darkcyan;
+  cursor: pointer;
+}
